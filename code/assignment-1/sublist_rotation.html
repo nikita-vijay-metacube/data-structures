@@ -1,0 +1,85 @@
+<script>
+    
+    // Javascript program to detect loop in a linked list
+    let head,L,R;
+    let N=2;
+    /* Linked list Node*/
+    class Node
+    {
+        constructor(d)
+        {
+            this.data = d;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+    
+    /* Inserts a new Node at front of the list. */
+    function push(new_data)
+    {
+        let old_node=head
+        let new_node = new Node(new_data);
+        if(!L)
+            R=L=new_node;
+        if(old_node)
+            old_node.prev=new_node
+        new_node.next = head;
+        // new_node.prev = old_node;
+        head = head = new_node;
+        L=new_node;
+    }
+    
+    /* Inserts a new Node at front of the list. */
+    function rotate()
+    {
+        let temp;
+        let Left=L
+        let inc=0
+        // console.log("p",p.prev)
+        for (let i=0;i<N;i++){
+            let p=R.prev;
+            while(p){
+                if(p.prev!=L){
+                    console.log("before",p)
+                    temp=p.data;
+                    p.data=p.prev.data
+                    // p.next=p.next
+                    // p.next=p.prev.next
+                    p.prev.data=temp
+                    // p.prev=p.prev.prev
+                    console.log("after",p)
+                    console.log(inc)
+                    p=p.prev
+                    console.log(p)
+                    inc++
+                }else{
+                    p.data=temp
+                    p=null
+                }
+            }
+        }
+        document.write("<br/><b>List after <i>N="+N+"</i> Rotation::</b>")
+        while(Left){
+            document.write(Left.data+" ")
+            Left=Left.next
+        }
+    }
+    push(7);
+    push(6);
+    push(5);
+    push(4);
+    push(3);
+    push(2);
+    
+    let Left =L
+    document.write("<b>Original List: </b>")
+    while(Left){
+            document.write(Left.data," ")
+            Left=Left.next
+        }
+    document.write("<br>N= ",N,"<br/>")
+    document.write("L(Leftmost Element in the list) = ",L.data,"<br/>")
+    document.write("R(Rightmost Element in the list) = ",R.data,"<br/>")
+    document.write("head= ",head.data,"<br/>")
+    rotate()
+</script>

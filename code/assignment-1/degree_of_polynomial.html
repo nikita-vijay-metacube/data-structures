@@ -1,0 +1,89 @@
+<script>
+    let head; 
+    class Node
+    {
+        constructor(d)
+        {
+            this.data = d;
+            this.next = null;
+        }
+    }
+ 
+    /* Inserts a new Node at front of the list. */
+    function push(new_data)
+    {
+        let new_node = new Node(new_data);
+        new_node.next = head;
+        head = head = new_node;
+    }
+    /* Inserts a new Node at front of the list. */
+    function viewlist()
+    {
+        document.write("Our Expression Is::<b id='list'>")
+        while(head!=null){
+            document.write(head.data+" ")
+            head=head.next
+        }
+
+        document.write('</b><br>');
+        return true;
+    }
+
+    var polynomialExp = '3 * x ^ 2 * y ^ 4 - 5 * z ^ 2 + x - y + 20';
+    const polynomialArray = polynomialExp.split(" ");
+    for(var i= (polynomialArray.length-1);i>=0; i--){
+        push(polynomialArray[i])
+    }
+    viewlist()
+    var maxDegree = 0;
+    var allStrings = [];
+    var subStrings = [];
+    allStrings = polynomialExp.split(/[+-]/);
+    console.log("allstrings::",allStrings)
+    for(var i=0;i<allStrings.length;i++){
+        allStrings[i] = allStrings[i].trim();
+        subStrings=allStrings[i].split(" * ")
+        console.log("subStrings::",subStrings)
+                var tempDegree = 0;
+        for(var j=0; j<subStrings.length; j++){
+            // if(subStrings[j] == '*'){
+                if(!isNumeric(subStrings[j])){
+                    basicExp=subStrings[j].split(" ")
+                    var prev = basicExp[0];
+                    for(var k=1; k<basicExp.length; k++){
+                        if(prev == '^'){
+                            tempDegree+=parseInt(basicExp[k])
+                        }
+                        prev=basicExp[k]
+                    }
+                    
+                }
+    console.log("tempDegree ::",tempDegree )
+            // }
+            if(tempDegree > maxDegree)
+                maxDegree = tempDegree
+        }
+    }
+        document.write("Degree of Polynomial:: ",maxDegree)
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+    // var r = /[a-z](\^\d\**)?/g;
+    // var t = 'a^6*b^7+a^6+a^9+a+1';
+    // map(callbackFn)
+    // var order = 0;
+
+    // var matches = t.match(r);
+
+    // for(var i = 0, j = matches.length ; i< j; i++){
+    //     var exp = matches[i].split('^')[1];
+    //     // document.write("dfsdfdsf       ",exp+"   <br>")
+    //     if(exp && (exp > order)){
+    //         order = exp;
+    //     }
+    // }
+
+
+    
+    // document.write(order); // Logs '3'
+</script>

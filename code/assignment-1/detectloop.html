@@ -1,0 +1,73 @@
+
+ <script>
+// Javascript program to detect loop in a linked list
+let head_looplist; // head of list
+let head_nolooplist;
+/* Linked list Node*/
+class Node
+{
+    constructor(d)
+    {
+        this.data = d;
+        this.next = null;
+    }
+}
+ 
+/* Inserts a new Node at front of the list. */
+function push(new_data)
+{
+    let new_node = new Node(new_data);
+    new_node.next = head_looplist;
+    head_looplist = head_nolooplist = new_node;
+}
+ 
+ 
+function detectLoop(head)
+{
+    let slow_p = head, fast_p = head;
+    let flag = 0;
+     
+    while (slow_p != null && fast_p != null &&
+           fast_p.next != null)
+    {
+        slow_p = slow_p.next;
+        fast_p = fast_p.next.next;
+        if (slow_p == fast_p)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 1)
+        document.write("<br><b> Loop found in list: </b><br>");
+    else
+        document.write("<br><b> Loop not found in list: </b><br>");
+    let turn=0;
+    while(head!=null && turn <100){
+        document.write(head.data+" ")
+        head=head.next
+        turn++;
+    }
+    if(turn==100){
+        document.write('...')
+    }
+}
+ 
+// To push elements in any linked list
+push(78);
+push(98);
+push(67);
+push(40);
+ 
+// Creating loop by pointing next of last element as head
+head_looplist.next.next.next.next = head_looplist;
+ 
+detectLoop(head_looplist);
+ 
+// Leaving bull for head to avoid loop
+head_nolooplist.next.next.next.next = null;
+ 
+detectLoop(head_nolooplist);
+ 
+// This code is contributed by avanitrachhadiya2155
+ </script>
