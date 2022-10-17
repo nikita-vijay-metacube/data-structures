@@ -31,6 +31,7 @@ class tree
 
   System.out.print("\n"+d.getCanonicalPath());
   expend(d,"    ");
+  System.out.println();
  }
 
  static void expend(File d,String spc)

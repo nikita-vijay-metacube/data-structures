@@ -35,7 +35,7 @@ public class CollegeData {
         while(studentsInput<totalStudents) 
         {
             System.out.println( "Please Enter Student name: ");
-            name= sc.nextLine();
+            name= sc.next();
             System.out.println( "Please Enter 5 programs: ");
             stprogramcount=0;
             String programarr[] = new String[totalStPrograms];

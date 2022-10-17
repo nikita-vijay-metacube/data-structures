@@ -3,7 +3,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BinarySearchTree {
+public class BinarySearchTree implements BinarySearchTreeInterface{
 
   static class Node {
       public String data;
@@ -170,14 +170,14 @@ public class BinarySearchTree {
     }
     // System.out.println(dicData);
 
-    System.out.println("Dictionary Contains the following nodes in BST form:: ");
+    System.out.println("\nDictionary Contains the following nodes in BST form:: ");
     bst.preorder();
-    System.out.println("Searching A in BST:: ");
+    System.out.println("\nSearching A in BST:: ");
     System.out.println(bst.search("A"));
     bst.deleteANode(new Node("A","apple"));
-    System.out.println("After Deleting Node A ");
+    System.out.println("\nAfter Deleting Node A ");
     bst.preorder();
-    System.out.println("Searching A in BST (After Deletion):: ");
+    System.out.println("\nSearching A in BST (After Deletion):: ");
     System.out.println(bst.search("A"));
     // bs.order();
   }

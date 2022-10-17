@@ -46,6 +46,6 @@ class ls
   {
    System.out.printf("\n\t%-40s %s",f.getName(),f.exists());
   }
-
+  System.out.println();
  }
 }

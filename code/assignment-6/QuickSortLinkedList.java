@@ -184,6 +184,7 @@ public class QuickSortLinkedList {
 
 		System.out.println("\nLinked List after sorting");
 		list.printList(list.head);
+		System.out.println();
 	}
 }
 

@@ -157,14 +157,18 @@ public static void main(String[] args)
 	
 	// Initialising new object of
 	// CircularQueueSample class.
-	CircularQueueSample q = new CircularQueueSample(5);
+	CircularQueueSample q = new CircularQueueSample(4);
 	
-	q.enQueue(14);
-	q.enQueue(22);
-	q.enQueue(13);
-	q.enQueue(-6);
+	System.out.println("Queue is initialized with Size 4");
+	System.out.println("Inserting 20, 30, 40, 50 in Queue");
+	q.enQueue(20);
+	q.enQueue(30);
+	q.enQueue(40);
+	q.enQueue(50);
 	
 	q.displayQueue();
+	System.out.printf(
+		"\n\ndeleting 2 nodes\n\n");
 
 	int x = q.deQueue();
 
@@ -186,12 +190,14 @@ public static void main(String[] args)
 
 	q.displayQueue();
 	
-	q.enQueue(9);
-	q.enQueue(20);
-	q.enQueue(5);
+	System.out.println("\nInserting one more item 60 in Queue");
+	q.enQueue(60);
+	System.out.println("\nInserting one more item 25 in Queue");
+	q.enQueue(25);
 	
 	q.displayQueue();
 	
+	System.out.println("\nInserting one more item 20 in Queue");
 	q.enQueue(20);
 }
 }

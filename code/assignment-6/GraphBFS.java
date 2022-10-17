@@ -1,72 +1,75 @@
+import java.io.*;
 import java.util.*;
-public class GraphBFS {
-	public static void main(String args[]) {
-		Graph g = new Graph(6);
-		g.addEdge(0, 1);
-		g.addEdge(0, 2);
-		g.addEdge(1, 2);
-		g.addEdge(1, 3);
-		g.addEdge(3, 4);
-		g.addEdge(2, 3);
-		g.addEdge(4, 0);
-		g.addEdge(4, 1);
-		g.addEdge(4, 5);
-		g.BFS(0);
 
-	}
-}
+class GraphBFS
+{
+    private int V;                             
+    private LinkedList<Integer> adj[];            
+    private Queue<Integer> queue;                  
+ 
+    GraphBFS(int v)
+    {
+        V = v;
+        adj = new LinkedList[v];
+        for (int i=0; i<v; i++)
+        {
+            adj[i] = new LinkedList<>();
+        }
+        queue = new LinkedList<Integer>();
+    }
 
-class Node {
-	int dest;
-	Node next;
+ 
+    void addEdge(int v,int w)
+    {
+        adj[v].add(w);                          
+    }
+ 
+    void BFS(int n)
+    {
 
-	public Node(int d) {
-		dest = d;
-		next = null;
-	}
-}
+        boolean nodes[] = new boolean[V];    
+        int a = 0;
+ 
+        nodes[n]=true;                  
+        queue.add(n);                 
+ 
+        while (queue.size() != 0)
+        {
+            n = queue.poll();             
+            System.out.print(n+" ");           
+ 
+            for (int i = 0; i < adj[n].size(); i++)  
+            {
+                a = adj[n].get(i);
+                if (!nodes[a])                   
+                {
+                    nodes[a] = true;
+                    queue.add(a);
+                }
+            }  
+        }
+    }
 
-class adjList {
-	Node head;
-}
-
-class Graph {
-	int V;
-	adjList[] array;
-
-	public Graph(int V) {
-		this.V = V;
-		array = new adjList[V]; // linked lists = number of Nodes in Graph
-
-		for (int i = 0; i < V; i++) {
-			array[i] = new adjList();
-			array[i].head = null;
-		}
-	}
-
-	public void addEdge(int src, int dest) {
-		Node n = new Node(dest);
-		n.next = array[src].head;
-		array[src].head = n;
-	}
-
-	public void BFS(int startVertex) {
-		boolean[] visited = new boolean[V];
-		Queue<Integer> s = new LinkedList<Integer>();
-
-		s.add(startVertex);
-		while (s.isEmpty() == false) {
-			int n = s.poll();
-			System.out.print(" " + n);
-			visited[n] = true;
-			Node head = array[n].head;
-			while (head != null) {
-				if (visited[head.dest] == false) {
-					s.add(head.dest);
-					visited[head.dest] = true;
-				}
-				head = head.next;
-			}
-		}
-	}
+    public static void main(String args[])
+    {
+        GraphBFS graph = new GraphBFS(6);
+ 
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 3);
+        graph.addEdge(0, 4);
+        graph.addEdge(4, 5);
+        graph.addEdge(3, 5);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 0);
+        graph.addEdge(2, 1);
+        graph.addEdge(4, 1);
+        graph.addEdge(3, 1);
+        graph.addEdge(5, 4);
+        graph.addEdge(5, 3);
+ 
+        System.out.println("The Breadth First Traversal of the graph is as follows :");
+ 
+        graph.BFS(0);
+		System.out.println();
+    }
 }

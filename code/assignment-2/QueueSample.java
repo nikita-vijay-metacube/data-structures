@@ -81,9 +81,10 @@ public class QueueSample {
 	{
 		Queue q = new Queue(4);
 
+		System.out.println("Queue is initialized with Size 4");
 		q.queueDisplay();
-
 		// inserting elements in the queue
+		System.out.println("Inserting 20, 30, 40, 50 in Queue");
 		q.queueEnqueue(20);
 		q.queueEnqueue(30);
 		q.queueEnqueue(40);
@@ -92,6 +93,7 @@ public class QueueSample {
 		// print Queue elements
 		q.queueDisplay();
 
+		System.out.println("\nInserting one more item 60 in Queue");
 		// insert element in the queue
 		q.queueEnqueue(60);
 
@@ -107,8 +109,11 @@ public class QueueSample {
 		q.queueDisplay();
 
 		// print front of the queue
+		System.out.println("\nNow, the front element of queue after deleting 2 nodes is-");
 		q.queueFront();
+		System.out.println("\nInserting item 60 agin in Queue(As we have deleted 2 nodes, we have only 2 nodes remaining in the queue");
 		q.queueEnqueue(60);
 		q.queueDisplay();
+		System.out.println("\nStill we can't add more items as queue maintains unused space. So here we will be using circular queue to recover this issue");
 	}
 }
